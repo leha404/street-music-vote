@@ -33,7 +33,7 @@ export default function HomePage() {
     <main className="container">
       <div className="row" style={{ justifyContent: "space-between" }}>
         <span className="badge">LIVE</span>
-        <a href={state.channelUrl} target="_blank" rel="noreferrer" className="muted">
+        <a href={state.channelUrl} target="_blank" rel="noreferrer" className="channel-link">
           Мой канал
         </a>
       </div>
@@ -45,9 +45,18 @@ export default function HomePage() {
       </section>
 
       <section className="card">
-        {state.aboutText.split("\n\n").map((paragraph, idx) => (
-          <p key={idx}>{paragraph}</p>
-        ))}
+        <p className="intro-hello">
+          <strong>Привет! Меня зовут Алексей</strong>
+        </p>
+        <p>Я музыкант с более чем 10-ти летним стажем</p>
+        <p>
+          Если вам нравится мое творчество - вы можете поддержать меня любой суммой, а я могу сыграть вам вашу
+          песню.
+        </p>
+        <p>Если я ее не знаю - я найду слова и аккорды к песне в интернете при вас</p>
+        <p>
+          А можете просто проголосовать за следующую песню, это <strong>бесплатно</strong>!
+        </p>
       </section>
 
       <div className="stack">

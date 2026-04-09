@@ -1,11 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import type { PublicState } from "@/lib/store";
 
 export default function AdminPage() {
   const [state, setState] = useState<PublicState | null>(null);
   const [info, setInfo] = useState("");
+  const [query, setQuery] = useState("");
 
   const load = useCallback(async () => {
     const response = await fetch("/api/state", { cache: "no-store" });
@@ -18,6 +19,16 @@ export default function AdminPage() {
     const timer = setInterval(load, 3000);
     return () => clearInterval(timer);
   }, [load]);
+
+  const filteredSongs = useMemo(() => {
+    if (!state) {
+      return [];
+    }
+    const q = query.trim().toLowerCase();
+    return state.songs.filter(
+      (song) => song.title.toLowerCase().includes(q) || song.artist.toLowerCase().includes(q)
+    );
+  }, [query, state]);
 
   const selectManual = async (songId: string) => {
     const response = await fetch("/api/admin/select-next", {
@@ -93,8 +104,14 @@ export default function AdminPage() {
 
       <section className="stack">
         <strong>Список песен и голоса</strong>
+        <input
+          className="input"
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          placeholder="Поиск песни..."
+        />
         <ul className="list">
-          {state.songs.map((song) => (
+          {filteredSongs.map((song) => (
             <li key={song.id} className="list-item">
               <div>
                 <div>

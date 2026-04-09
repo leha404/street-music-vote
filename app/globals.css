@@ -8,9 +8,12 @@
 
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #f5f7fb;
-  color: #1b1f24;
+  font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255, 133, 70, 0.35), transparent 38%),
+    radial-gradient(circle at 85% 18%, rgba(255, 64, 140, 0.24), transparent 34%),
+    linear-gradient(145deg, #120b20 0%, #1b2049 44%, #402560 100%);
+  color: #f7f9ff;
 }
 
 a {
@@ -28,33 +31,39 @@ a {
 }
 
 .card {
-  background: #ffffff;
-  border: 1px solid #dde3ed;
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06));
+  border: 1px solid rgba(255, 195, 148, 0.25);
+  backdrop-filter: blur(10px);
   border-radius: 14px;
   padding: 16px;
+  box-shadow: 0 10px 24px rgba(13, 7, 31, 0.38);
 }
 
 .title {
   margin: 0;
   font-size: 28px;
   text-align: center;
+  letter-spacing: 0.4px;
+  text-shadow: 0 0 14px rgba(255, 142, 73, 0.35);
 }
 
 .subtitle {
   margin: 0;
   text-align: center;
-  color: #5c6470;
+  color: #c7d3ff;
 }
 
 .song-now {
   font-size: 32px;
   font-weight: 700;
   text-align: center;
+  letter-spacing: 0.45px;
+  text-shadow: 0 0 16px rgba(255, 126, 87, 0.42);
 }
 
 .song-meta {
   text-align: center;
-  color: #5c6470;
+  color: #c7d3ff;
 }
 
 .stack {
@@ -75,24 +84,40 @@ a {
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  transition: transform 160ms ease, filter 160ms ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
 }
 
 .button.primary {
-  background: #2168ff;
+  background: linear-gradient(90deg, #ff8c4c 0%, #ff4f93 100%);
   color: #ffffff;
+  box-shadow: 0 6px 18px rgba(255, 97, 125, 0.35);
 }
 
 .button.secondary {
-  background: #0f1728;
+  background: linear-gradient(90deg, #a35bff 0%, #5e8dff 100%);
   color: #ffffff;
+  box-shadow: 0 6px 18px rgba(121, 95, 255, 0.35);
 }
 
 .input {
   width: 100%;
-  border: 1px solid #ccd5e2;
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 10px;
   padding: 10px 12px;
   font-size: 16px;
+  background: rgba(10, 15, 35, 0.55);
+  color: #f7f9ff;
+  outline: none;
+}
+
+.input:focus {
+  border-color: rgba(255, 175, 119, 0.8);
+  box-shadow: 0 0 0 3px rgba(255, 151, 93, 0.16);
 }
 
 .list {
@@ -105,8 +130,8 @@ a {
 }
 
 .list-item {
-  border: 1px solid #dde3ed;
-  background: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(8, 11, 28, 0.5);
   border-radius: 10px;
   padding: 12px;
   display: flex;
@@ -118,14 +143,19 @@ a {
 .badge {
   display: inline-block;
   font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
   border-radius: 999px;
-  padding: 4px 8px;
-  background: #ebf1ff;
-  color: #1649b4;
+  padding: 6px 10px;
+  background: linear-gradient(90deg, rgba(255, 133, 75, 0.35), rgba(255, 73, 157, 0.28));
+  border: 1px solid rgba(255, 163, 106, 0.5);
+  color: #ffe7d8;
+  box-shadow: 0 0 18px rgba(255, 115, 127, 0.32);
+  animation: pulseLive 1.8s ease-in-out infinite;
 }
 
 .muted {
-  color: #5c6470;
+  color: #c7d3ff;
 }
 
 .row {
@@ -136,4 +166,37 @@ a {
 
 .small {
   font-size: 12px;
+}
+
+.channel-link {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffe2c7;
+  text-decoration: none;
+  border-bottom: 2px solid rgba(255, 194, 145, 0.8);
+  text-shadow: 0 0 10px rgba(255, 138, 64, 0.45);
+  transition: color 160ms ease, text-shadow 160ms ease;
+}
+
+.channel-link:hover {
+  color: #fff4e8;
+  text-shadow: 0 0 14px rgba(255, 128, 92, 0.7);
+}
+
+.intro-hello {
+  text-align: center;
+  font-size: 22px;
+  text-shadow: 0 0 12px rgba(255, 147, 105, 0.36);
+}
+
+@keyframes pulseLive {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 115, 127, 0.48);
+  }
+  70% {
+    box-shadow: 0 0 0 9px rgba(255, 115, 127, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 115, 127, 0);
+  }
 }

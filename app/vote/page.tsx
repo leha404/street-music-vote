@@ -80,13 +80,9 @@ export default function VotePage() {
 
   return (
     <main className="container">
-      <Link href="/" className="muted">
-        Назад к текущей песне
-      </Link>
-
       <section className="card stack">
         <h1 className="title">Голосование</h1>
-        <p className="subtitle">Раунд #{state.roundId}. Отметьте песни и отправьте голос один раз.</p>
+        <p className="subtitle">Отметьте песни и отправьте голос один раз.</p>
         <input
           className="input"
           value={query}
@@ -123,9 +119,15 @@ export default function VotePage() {
         })}
       </ul>
 
-      <button className="button primary" disabled={voteStatus === "sent"} onClick={submitVote} type="button">
-        {voteStatus === "sent" ? "Голос уже отправлен" : "Отправить мой выбор"}
-      </button>
+      {voteStatus === "sent" ? (
+        <Link href="/" className="button primary">
+          Голос уже отправлен, назад на главную
+        </Link>
+      ) : (
+        <button className="button primary" onClick={submitVote} type="button">
+          Отправить мой выбор
+        </button>
+      )}
 
       {message && <p className="subtitle">{message}</p>}
     </main>
